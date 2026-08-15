@@ -11,27 +11,26 @@ export function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           {/* Left Column: Pulumi-style Headline & Value Prop */}
           <div className="lg:col-span-7 space-y-6 text-left">
-            {/* Version Announcement Pill (Pulumi Style) */}
+            {/* Version Announcement Pill */}
             <Link
               href="/changelog"
               prefetch={true}
               className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-amber-50/80 border border-amber-200 hover:border-amber-300 text-xs font-mono transition-all group cursor-pointer"
             >
               <span className="text-amber-800 font-bold tracking-wider uppercase text-[11px]">
-                LATEST RELEASE: FULL SUPPORT FOR TERRAFORM AND HCL
+                The TypeScript-Native Infrastructure Platform
               </span>
               <ChevronRight className="w-3.5 h-3.5 text-amber-600 group-hover:translate-x-0.5 transition-transform" />
             </Link>
 
-            {/* Pulumi Exact Headline */}
-            <div className="space-y-3">
+            {/* Tagline & Headline */}
+            <div className="space-y-4">
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight text-gray-900 leading-[1.08]">
-                <span className="text-[#FFB020] block">Next-level</span>
-                <span>infrastructure as code</span>{" "}
-                <span className="block">for humans and agents.</span>
+                <span className="text-[#FFB020] block">Define. Compile.</span>
+                <span>Plan. Deploy.</span>
               </h1>
-              <p className="text-lg sm:text-xl text-gray-600 max-w-xl font-normal leading-relaxed pt-2">
-                Ship cloud infrastructure at the speed of AI with languages and tools that stay out of your way.
+              <p className="text-lg sm:text-xl text-gray-600 max-w-2xl font-normal leading-relaxed pt-2">
+                Build and manage cloud infrastructure with TypeScript — from application definition to provider-specific deployment, through a compiler-driven, provider-independent architecture.
               </p>
             </div>
 

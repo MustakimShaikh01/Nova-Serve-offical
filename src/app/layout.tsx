@@ -19,11 +19,11 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "NovaServe — Next-level infrastructure as code for humans and agents.",
+    default: "NovaServe — The TypeScript-Native Infrastructure Platform",
     template: "%s | NovaServe",
   },
   description:
-    "Define your cloud application once in TypeScript, Python, or Go. NovaServe compiles, plans, and deploys it deterministically across multiple cloud providers.",
+    "Build and manage cloud infrastructure with TypeScript — from application definition to provider-specific deployment, through a compiler-driven, provider-independent architecture.",
   keywords: [
     "NovaServe",
     "Cloud Compiler",
@@ -41,9 +41,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://novaserve.dev",
-    title: "NovaServe — Next-level infrastructure as code for humans and agents.",
+    title: "NovaServe — The TypeScript-Native Infrastructure Platform",
     description:
-      "Define your cloud application once in TypeScript, Python, or Go. NovaServe compiles, plans, and deploys it deterministically across multiple cloud providers.",
+      "Build and manage cloud infrastructure with TypeScript — from application definition to provider-specific deployment, through a compiler-driven, provider-independent architecture.",
     siteName: "NovaServe Platform",
   },
   robots: {
