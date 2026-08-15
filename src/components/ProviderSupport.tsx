@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Boxes, CheckCircle2 } from "lucide-react";
+import { Boxes, CheckCircle2, ShieldCheck, AlertCircle, Clock } from "lucide-react";
 import {
   AwsIcon,
   CloudflareIcon,
@@ -39,13 +39,13 @@ export function ProviderSupport() {
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
           <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-xs font-mono text-amber-900 font-extrabold">
             <Boxes className="w-3.5 h-3.5 text-[#FFB020]" />
-            <span>NATIVE PROVIDER SUPPORT</span>
+            <span>PROVIDER ADAPTER ARCHITECTURE</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-gray-900">
-            Deploy to any cloud provider without lock-in
+            Multi-Provider Adapter Model
           </h2>
-          <p className="text-base sm:text-lg text-gray-600 font-semibold">
-            NovaServe compiles your application AST into native provider manifests for AWS, Cloudflare, Docker, GCP, and Azure.
+          <p className="text-base sm:text-lg text-gray-600 font-semibold leading-relaxed">
+            NovaServe supports AWS and local development today, with additional providers evolving through the project roadmap.
           </p>
         </div>
 
@@ -59,20 +59,24 @@ export function ProviderSupport() {
                 <button
                   key={p.id}
                   onClick={() => setSelectedProvider(p)}
-                  className={`text-left p-5 rounded-3xl border transition-all flex flex-col justify-between space-y-4 ${
+                  className={`text-left p-5 rounded-3xl border transition-all flex flex-col justify-between space-y-4 cursor-pointer ${
                     isSelected
-                      ? "bg-[#FFB020] border-[#FFB020] text-black shadow-xl"
+                      ? "bg-[#FFB020] border-[#FFB020] text-black shadow-xl ring-2 ring-[#FFB020]"
                       : "bg-white border-gray-200 hover:border-[#FFB020] text-gray-900"
                   }`}
                 >
                   <div className="flex items-center justify-between">
-                    <span className="px-2.5 py-1 rounded bg-white/80 border border-gray-300 text-gray-900 text-[10px] font-mono font-black flex items-center space-x-1.5">
-                      {renderProviderIcon(p.id)}
+                    <span className={`px-2.5 py-1 rounded border text-[10px] font-mono font-black flex items-center space-x-1.5 ${p.badgeBg}`}>
                       <span>{p.badge}</span>
                     </span>
                     <span className="flex h-2 w-2 relative">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span>
+                      {p.status === "Production-Ready" ? (
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span>
+                      ) : p.status === "Experimental" ? (
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+                      ) : (
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-gray-400"></span>
+                      )}
                     </span>
                   </div>
 
@@ -87,8 +91,7 @@ export function ProviderSupport() {
                   </div>
 
                   <div className="pt-3 border-t border-gray-200/50 flex items-center justify-between text-xs font-mono">
-                    <span>Execution Latency: {p.latency}</span>
-                    <span className="font-extrabold">{p.sla} SLA</span>
+                    <span className="font-bold">{p.status}</span>
                   </div>
                 </button>
               );
@@ -104,7 +107,7 @@ export function ProviderSupport() {
                 </div>
                 <div>
                   <span className="text-xs font-mono uppercase text-gray-500 font-bold">
-                    SUPPORTED CLOUD SPEC
+                    PROVIDER ADAPTER STATUS
                   </span>
                   <h3 className="text-xl font-black text-gray-900 mt-0.5">
                     {selectedProvider.name}
@@ -119,7 +122,7 @@ export function ProviderSupport() {
 
             <div className="space-y-3">
               <span className="text-xs font-mono text-gray-900 font-black block">
-                NATIVELY COMPILED RESOURCES ({selectedProvider.resources.length})
+                MAPPED RESOURCES ({selectedProvider.resources.length})
               </span>
               <div className="grid grid-cols-1 gap-2">
                 {selectedProvider.resources.map((res, idx) => (
@@ -131,7 +134,7 @@ export function ProviderSupport() {
                       <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
                       <span>{res}</span>
                     </span>
-                    <span className="text-[10px] text-[#FFB020] font-black">NATIVE AST</span>
+                    <span className="text-[10px] text-gray-600 font-black">{selectedProvider.status}</span>
                   </div>
                 ))}
               </div>

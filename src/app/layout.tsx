@@ -19,30 +19,34 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "NovaServe — Build Fast. Deploy Anywhere. Scale Automatically.",
+    default: "NovaServe — The TypeScript-Native Serverless Framework",
     template: "%s | NovaServe",
   },
   description:
-    "The modern open-source framework for building, deploying, and scaling cloud applications.",
+    "Build, develop, plan, and deploy serverless applications with TypeScript—powered by a compiler-driven infrastructure engine.",
   keywords: [
     "NovaServe",
-    "Serverless Framework",
-    "Build Fast Deploy Anywhere",
-    "Cloud Applications",
-    "Open Source Infrastructure",
-    "Multi-cloud",
-    "TypeScript Infrastructure",
+    "TypeScript Serverless Framework",
+    "serverless framework",
+    "TypeScript serverless",
+    "open source serverless framework",
+    "cloud application framework",
+    "Nova IR",
+    "compiler-driven infrastructure",
+    "least-privilege IAM synthesis",
+    "AWS serverless framework",
+    "local serverless emulator"
   ],
   authors: [{ name: "NovaServe Team" }],
-  creator: "NovaServe Cloud Inc.",
-  metadataBase: new URL("https://novaserve.dev"),
+  creator: "NovaServe Open Source",
+  metadataBase: new URL("https://www.novaserve.cloud"),
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://novaserve.dev",
-    title: "NovaServe — Build Fast. Deploy Anywhere. Scale Automatically.",
+    url: "https://www.novaserve.cloud",
+    title: "NovaServe — The TypeScript-Native Serverless Framework",
     description:
-      "The modern open-source framework for building, deploying, and scaling cloud applications.",
+      "Build Serverless. Compile to the Cloud. Pure TypeScript serverless framework with static AST compiler analysis and Nova IR.",
     siteName: "NovaServe Platform",
   },
   robots: {

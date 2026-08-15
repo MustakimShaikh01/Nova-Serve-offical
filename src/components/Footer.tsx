@@ -100,7 +100,7 @@ export function Footer() {
         {/* Bottom copyright & operational status */}
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-600 font-semibold">
           <div className="flex items-center space-x-3">
-            <span>© {new Date().getFullYear()} NovaServe Cloud Inc. All rights reserved.</span>
+            <span>© {new Date().getFullYear()} NovaServe Open Source. All rights reserved.</span>
             <span>•</span>
             <Link href="/security" prefetch={true} className="hover:text-[#FFB020] cursor-pointer">Privacy Policy</Link>
             <span>•</span>

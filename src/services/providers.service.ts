@@ -1,18 +1,16 @@
 /**
  * SOLID Principle: Single Responsibility & Repository Pattern
- * Manages native cloud provider specifications and resource bindings.
+ * Manages native cloud provider specifications and resource bindings with accurate stability tiers.
  */
 
 export interface CloudProviderSpec {
   id: string;
   name: string;
   category: string;
-  status: string;
-  color: string;
+  status: "Production-Ready" | "Experimental" | "Planned Roadmap";
   badge: string;
+  badgeBg: string;
   resources: string[];
-  latency: string;
-  sla: string;
   desc: string;
 }
 
@@ -21,64 +19,64 @@ export class ProvidersService {
 
   private providers: CloudProviderSpec[] = [
     {
+      id: "local",
+      name: "Local Emulator",
+      category: "Developer Sandbox",
+      status: "Production-Ready",
+      badge: "PRODUCTION-READY",
+      badgeBg: "bg-emerald-100 text-emerald-900 border-emerald-300",
+      resources: ["Hono HTTP Sandbox", "Local S3 Bucket Mock", "SQS Queue Mock", "SQLite / Memory DB"],
+      desc: "Sub-200ms local development environment running entirely on your workstation without cloud credentials.",
+    },
+    {
       id: "aws",
       name: "Amazon Web Services (AWS)",
-      category: "Hyperscale Cloud",
-      status: "100% OPERATIONAL",
-      color: "#FF9900",
-      badge: "TIER 1 PRIMARY",
-      resources: ["AWS Lambda", "DynamoDB", "Amazon S3", "Amazon ECS / Fargate", "Route53", "AWS IAM", "CloudFront CDN"],
-      latency: "12ms avg",
-      sla: "99.999%",
-      desc: "Native SDK compilation to CloudFormation / CDK AST primitives with sub-second execution.",
+      category: "Target Cloud",
+      status: "Production-Ready",
+      badge: "PRODUCTION-READY",
+      badgeBg: "bg-emerald-100 text-emerald-900 border-emerald-300",
+      resources: ["AWS Lambda (Node.js/Arm64)", "Amazon S3 Storage", "Amazon SQS Queues", "API Gateway v2"],
+      desc: "Full production target compiler generating scoped IAM policies and deterministic CloudFormation/CDK plans.",
     },
     {
       id: "cloudflare",
-      name: "Cloudflare Edge Engine",
-      category: "Edge Anycast Network",
-      status: "100% OPERATIONAL",
-      color: "#F38020",
-      badge: "GLOBAL EDGE",
-      resources: ["Cloudflare Workers", "Workers KV", "Durable Objects", "Cloudflare D1 SQL", "R2 Object Storage", "Vectorize"],
-      latency: "4ms avg",
-      sla: "99.999%",
-      desc: "Instant V8 isolates deployment across 320+ edge global PoPs with zero cold starts.",
+      name: "Cloudflare Edge",
+      category: "Edge Network",
+      status: "Experimental",
+      badge: "EXPERIMENTAL",
+      badgeBg: "bg-amber-100 text-amber-900 border-amber-300",
+      resources: ["Cloudflare Workers", "Workers KV Storage", "Cloudflare Queues"],
+      desc: "Experimental target emitting V8 isolate worker bundles and Workers KV bindings.",
     },
     {
       id: "docker",
-      name: "Docker Container Spec",
-      category: "Container Runtime",
-      status: "100% OPERATIONAL",
-      color: "#2496ED",
-      badge: "PORTABLE IaC",
-      resources: ["Docker Engine", "Docker Compose v2", "OCI Image Registry", "Kubernetes Pods", "Containerd Engine"],
-      latency: "18ms avg",
-      sla: "99.99%",
-      desc: "Automated multi-stage Dockerfile compilation with slim layer optimization.",
+      name: "Docker Container Target",
+      category: "Container Engine",
+      status: "Experimental",
+      badge: "EXPERIMENTAL",
+      badgeBg: "bg-amber-100 text-amber-900 border-amber-300",
+      resources: ["Docker Engine", "Docker Compose v2", "Multi-stage OCI Container Build"],
+      desc: "Experimental target emitting optimized multi-stage Dockerfiles for local testing and container runtimes.",
     },
     {
       id: "gcp",
-      name: "Google Cloud Platform (GCP)",
+      name: "Google Cloud (GCP)",
       category: "Hyperscale Cloud",
-      status: "100% OPERATIONAL",
-      color: "#4285F4",
-      badge: "HIGH-COMPUTE",
-      resources: ["GCP Cloud Run", "Firestore KV", "Cloud Storage", "BigQuery ML", "GCP Pub/Sub", "Artifact Registry"],
-      latency: "14ms avg",
-      sla: "99.99%",
-      desc: "Direct integration with GCP IAM and Cloud Run container autoscaling engine.",
+      status: "Planned Roadmap",
+      badge: "PLANNED ROADMAP",
+      badgeBg: "bg-gray-100 text-gray-800 border-gray-300",
+      resources: ["GCP Cloud Run", "Cloud Storage", "GCP Pub/Sub"],
+      desc: "Planned provider adapter on our multi-cloud roadmap for Cloud Run and GCP Pub/Sub mapping.",
     },
     {
       id: "azure",
       name: "Microsoft Azure",
       category: "Enterprise Cloud",
-      status: "100% OPERATIONAL",
-      color: "#0089D6",
-      badge: "ENTERPRISE",
-      resources: ["Azure Functions", "Cosmos DB", "Blob Storage", "Azure Container Apps", "Key Vault", "Front Door"],
-      latency: "16ms avg",
-      sla: "99.99%",
-      desc: "Enterprise Azure Active Directory (Entra ID) token binding and ARM template AST output.",
+      status: "Planned Roadmap",
+      badge: "PLANNED ROADMAP",
+      badgeBg: "bg-gray-100 text-gray-800 border-gray-300",
+      resources: ["Azure Container Apps", "Blob Storage", "Azure Event Grid"],
+      desc: "Planned provider adapter on our multi-cloud roadmap for Azure ARM template generation.",
     },
   ];
 

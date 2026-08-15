@@ -57,7 +57,7 @@ export function Navbar() {
           <div className="max-w-7xl mx-auto flex items-center justify-center space-x-2 text-center w-full">
             <span className="text-[#FFB020]">✦</span>
             <span className="font-medium text-gray-200">
-              Latest release: Full support for Terraform state, cross-language AST modules, and HCL as a first-class language.
+              Latest release (v2.1.6): Nova IR 1.0.0, automated zero-trust IAM synthesis, and local Hono emulator support.
             </span>
             <Link
               href="/changelog"

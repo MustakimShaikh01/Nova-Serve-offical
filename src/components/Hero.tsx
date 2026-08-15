@@ -11,30 +11,34 @@ export function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           {/* Left Column: Pulumi-style Headline & Value Prop */}
           <div className="lg:col-span-7 space-y-6 text-left">
-            {/* Announcement Pill */}
-            <Link
-              href="/changelog"
-              prefetch={true}
-              className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-amber-50/80 border border-amber-200 hover:border-amber-300 text-xs font-mono transition-all group cursor-pointer"
-            >
-              <span className="text-amber-800 font-bold tracking-wider uppercase text-[11px]">
-                Build. Deploy. Scale.
+            {/* Badges */}
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-900 text-xs font-mono font-extrabold">
+                OPEN SOURCE
               </span>
-              <ChevronRight className="w-3.5 h-3.5 text-amber-600 group-hover:translate-x-0.5 transition-transform" />
-            </Link>
+              <span className="px-3 py-1 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-900 text-xs font-mono font-extrabold">
+                TYPESCRIPT NATIVE
+              </span>
+              <span className="px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-900 text-xs font-mono font-extrabold">
+                SERVERLESS FRAMEWORK
+              </span>
+            </div>
 
             {/* Main Hero Tagline & Headline */}
             <div className="space-y-4">
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight text-gray-900 leading-[1.08]">
-                <span className="text-[#FFB020] block">Build Fast. Deploy Anywhere.</span>
-                <span>Scale Automatically.</span>
+                <span className="text-[#FFB020] block">Build Serverless.</span>
+                <span>Compile to the Cloud.</span>
               </h1>
-              <p className="text-lg sm:text-xl text-gray-600 max-w-2xl font-semibold leading-relaxed pt-2">
-                The modern open-source framework for building, deploying, and scaling cloud applications.
+              <div className="text-sm sm:text-base font-mono text-amber-800 font-bold uppercase tracking-wide">
+                The TypeScript-Native Serverless Framework
+              </div>
+              <p className="text-lg sm:text-xl text-gray-600 max-w-2xl font-medium leading-relaxed pt-1">
+                Build, develop, plan, and deploy serverless applications with TypeScript—powered by a compiler-driven infrastructure engine.
               </p>
             </div>
 
-            {/* CTAs (Exact Pulumi Buttons) */}
+            {/* CTAs */}
             <div className="flex flex-wrap items-center gap-4 pt-4">
               <Link
                 href="/docs"
@@ -45,12 +49,21 @@ export function Hero() {
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
 
+              <a
+                href="https://github.com/novaserve-cloud/novaserve"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-3.5 rounded-xl bg-gray-900 hover:bg-black text-white font-semibold text-base transition-all cursor-pointer shadow-md flex items-center space-x-2"
+              >
+                <span>View on GitHub</span>
+              </a>
+
               <Link
                 href="/docs"
                 prefetch={true}
                 className="px-6 py-3.5 rounded-xl bg-white hover:bg-gray-50 border border-gray-300 text-gray-900 font-semibold text-base transition-all cursor-pointer"
               >
-                Download open source
+                Documentation
               </Link>
             </div>
           </div>
