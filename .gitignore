@@ -1,0 +1,37 @@
+# Dependencies
+/node_modules
+/.pnpm-store
+
+# Next.js build output
+/.next/
+/out/
+/build
+
+# Production & environment files
+.env
+.env*.local
+.env.development
+.env.test
+.env.production
+
+# Vercel deployment metadata
+.vercel
+
+# Testing & logs
+/coverage
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# OS metadata & Editor settings
+.DS_Store
+*.pem
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
