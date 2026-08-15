@@ -18,36 +18,42 @@ export function Footer() {
               <span className="text-lg font-black text-gray-900 tracking-tight">NovaServe</span>
             </Link>
             <p className="text-sm text-gray-600 font-semibold leading-relaxed max-w-sm">
-              The modern open-source framework for building, deploying, and scaling cloud applications. Build Fast. Deploy Anywhere. Scale Automatically.
+              The modern open-source framework for building, deploying, and scaling cloud applications.
             </p>
-            <div className="flex items-center space-x-3 pt-2">
-              <a
-                href="https://github.com/novaserve-cloud/novaserve"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2.5 rounded-xl bg-gray-100 border border-gray-300 text-gray-700 hover:text-black hover:border-[#FFB020] hover:bg-[#FFB020] transition-colors cursor-pointer"
-                aria-label="GitHub"
-              >
-                <Github className="w-4 h-4" />
-              </a>
-              <a
-                href="https://twitter.com/novaserve"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2.5 rounded-xl bg-gray-100 border border-gray-300 text-gray-700 hover:text-black hover:border-[#FFB020] hover:bg-[#FFB020] transition-colors cursor-pointer"
-                aria-label="Twitter"
-              >
-                <Twitter className="w-4 h-4" />
-              </a>
-              <a
-                href="https://discord.gg/novaserve"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2.5 rounded-xl bg-gray-100 border border-gray-300 text-gray-700 hover:text-black hover:border-[#FFB020] hover:bg-[#FFB020] transition-colors cursor-pointer"
-                aria-label="Discord"
-              >
-                <Discord className="w-4 h-4" />
-              </a>
+            <div className="pt-2 space-y-3">
+              <h3 className="text-xl font-black text-gray-900 leading-tight">
+                Open source and free for individuals.
+              </h3>
+              <div className="flex flex-wrap items-center gap-3 pt-1">
+                <a
+                  href="https://github.com/novaserve-cloud/novaserve"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center space-x-2 px-3.5 py-2 rounded-xl bg-gray-100 border border-gray-300 text-xs font-mono font-bold text-gray-900 hover:border-[#FFB020] hover:bg-[#FFB020] transition-colors cursor-pointer shadow-xs"
+                >
+                  <Github className="w-4 h-4 text-gray-900" />
+                  <span>novaserve-cloud/novaserve</span>
+                  <span className="bg-white text-black px-1.5 py-0.5 rounded-md text-[10px] border border-gray-200">14.2K</span>
+                </a>
+                <a
+                  href="https://twitter.com/novaserve"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2.5 rounded-xl bg-gray-100 border border-gray-300 text-gray-700 hover:text-black hover:border-[#FFB020] hover:bg-[#FFB020] transition-colors cursor-pointer"
+                  aria-label="Twitter"
+                >
+                  <Twitter className="w-4 h-4" />
+                </a>
+                <a
+                  href="https://discord.gg/novaserve"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2.5 rounded-xl bg-gray-100 border border-gray-300 text-gray-700 hover:text-black hover:border-[#FFB020] hover:bg-[#FFB020] transition-colors cursor-pointer"
+                  aria-label="Discord"
+                >
+                  <Discord className="w-4 h-4" />
+                </a>
+              </div>
             </div>
           </div>
 

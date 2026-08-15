@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { BookOpen, Calendar, Clock, User, ArrowRight, Sparkles, CheckCircle2 } from "lucide-react";
+import { PodmanFeedSection } from "@/components/PodmanFeedSection";
 
 export default function BlogPage() {
   const posts = [
@@ -53,13 +54,13 @@ export default function BlogPage() {
         <div className="text-center space-y-4 max-w-3xl mx-auto">
           <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-xs font-mono text-amber-900 font-extrabold">
             <BookOpen className="w-3.5 h-3.5 text-[#FFB020]" />
-            <span>OPEN SOURCE ENGINEERING BLOG</span>
+            <span>OPEN SOURCE ENGINEERING BLOG & ECOSYSTEM FEEDS</span>
           </div>
           <h1 className="text-4xl sm:text-5xl font-black text-gray-900 tracking-tight">
-            NovaServe Engineering Insights
+            NovaServe Engineering & Container Insights
           </h1>
           <p className="text-base sm:text-lg text-gray-600 font-medium leading-relaxed">
-            Technical deep-dives on compiler theory, multi-cloud sharding, zero-trust security, and local developer experience written by core maintainers.
+            Technical deep-dives on compiler theory, multi-cloud sharding, zero-trust security, plus live RSS feeds from the Podman container ecosystem.
           </p>
         </div>
 
@@ -96,6 +97,11 @@ export default function BlogPage() {
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
+        </div>
+
+        {/* Podman Live RSS Feed Stream */}
+        <div className="pt-4">
+          <PodmanFeedSection />
         </div>
 
         {/* Blog Post List */}
