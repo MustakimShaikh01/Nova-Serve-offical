@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { BookOpen, Calendar, Clock, User, ArrowRight, Sparkles, CheckCircle2 } from "lucide-react";
-import { PodmanFeedSection } from "@/components/PodmanFeedSection";
+import { NovaFeedSection } from "@/components/NovaFeedSection";
 
 export default function BlogPage() {
   const posts = [
@@ -57,10 +57,10 @@ export default function BlogPage() {
             <span>OPEN SOURCE ENGINEERING BLOG & ECOSYSTEM FEEDS</span>
           </div>
           <h1 className="text-4xl sm:text-5xl font-black text-gray-900 tracking-tight">
-            NovaServe Engineering & Container Insights
+            NovaServe Engineering Insights
           </h1>
           <p className="text-base sm:text-lg text-gray-600 font-medium leading-relaxed">
-            Technical deep-dives on compiler theory, multi-cloud sharding, zero-trust security, plus live RSS feeds from the Podman container ecosystem.
+            Technical deep-dives on compiler theory, multi-cloud sharding, zero-trust security, plus live official NovaServe Cloud RSS stream.
           </p>
         </div>
 
@@ -99,9 +99,9 @@ export default function BlogPage() {
           </div>
         </div>
 
-        {/* Podman Live RSS Feed Stream */}
+        {/* NovaServe Live Official RSS Feed Stream */}
         <div className="pt-4">
-          <PodmanFeedSection />
+          <NovaFeedSection />
         </div>
 
         {/* Blog Post List */}
