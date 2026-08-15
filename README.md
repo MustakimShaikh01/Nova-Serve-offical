@@ -1,5 +1,5 @@
-# NovaServe: The TypeScript-Native Infrastructure Platform
-> **Define. Compile. Plan. Deploy.**
+# NovaServe: Build Fast. Deploy Anywhere. Scale Automatically.
+> *The modern open-source framework for building, deploying, and scaling cloud applications.*
 
 [![NPM Version](https://img.shields.io/npm/v/novaserve?color=%23FFB020&style=flat-svg)](https://www.npmjs.com/package/novaserve)
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache_2.0-emerald.svg)](https://opensource.org/licenses/Apache-2.0)
@@ -7,7 +7,7 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.7.3-blue.svg?logo=typescript)](https://www.typescriptlang.org/)
 [![Official Domain](https://img.shields.io/badge/Domain-novaserve.cloud-amber.svg)](https://novaserve.cloud)
 
-**NovaServe** is the TypeScript-native infrastructure platform. Build and manage cloud infrastructure with TypeScript — from application definition to provider-specific deployment, through a compiler-driven, provider-independent architecture. It parses your TypeScript application code AST, automatically synthesizes zero-trust least-privilege IAM policies, generates multi-cloud state graphs, and deploys serverless infrastructure to AWS, Cloudflare Edge, Docker, and GCP without writing raw YAML or HCL scripts.
+**NovaServe** is the modern open-source framework for building, deploying, and scaling cloud applications. Build Fast. Deploy Anywhere. Scale Automatically. It parses your TypeScript application code AST, automatically synthesizes zero-trust least-privilege IAM policies, generates multi-cloud state graphs, and deploys serverless infrastructure to AWS, Cloudflare Edge, Docker, and GCP without writing raw YAML or HCL scripts.
 
 ---
 

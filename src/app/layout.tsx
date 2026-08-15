@@ -19,20 +19,19 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "NovaServe — The TypeScript-Native Infrastructure Platform",
+    default: "NovaServe — Build Fast. Deploy Anywhere. Scale Automatically.",
     template: "%s | NovaServe",
   },
   description:
-    "Build and manage cloud infrastructure with TypeScript — from application definition to provider-specific deployment, through a compiler-driven, provider-independent architecture.",
+    "The modern open-source framework for building, deploying, and scaling cloud applications.",
   keywords: [
     "NovaServe",
-    "Cloud Compiler",
-    "TypeScript Infrastructure",
-    "Infrastructure as Code",
-    "Serverless",
+    "Serverless Framework",
+    "Build Fast Deploy Anywhere",
+    "Cloud Applications",
+    "Open Source Infrastructure",
     "Multi-cloud",
-    "Pulumi alternative",
-    "Terraform alternative",
+    "TypeScript Infrastructure",
   ],
   authors: [{ name: "NovaServe Team" }],
   creator: "NovaServe Cloud Inc.",
@@ -41,9 +40,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://novaserve.dev",
-    title: "NovaServe — The TypeScript-Native Infrastructure Platform",
+    title: "NovaServe — Build Fast. Deploy Anywhere. Scale Automatically.",
     description:
-      "Build and manage cloud infrastructure with TypeScript — from application definition to provider-specific deployment, through a compiler-driven, provider-independent architecture.",
+      "The modern open-source framework for building, deploying, and scaling cloud applications.",
     siteName: "NovaServe Platform",
   },
   robots: {
@@ -83,15 +82,15 @@ export default function RootLayout({
           "url": "https://md-shadab-azam-ansari.vercel.app/"
         },
         "downloadUrl": "https://www.npmjs.com/package/novaserve",
-        "codeRepository": "https://github.com/sazamansari/NovaServe-",
-        "description": "The TypeScript-Native Infrastructure Platform — Define. Compile. Plan. Deploy."
+        "codeRepository": "https://github.com/novaserve-cloud/novaserve",
+        "description": "NovaServe — Build Fast. Deploy Anywhere. Scale Automatically. The modern open-source framework for building, deploying, and scaling cloud applications."
       },
       {
         "@type": "Organization",
         "name": "NovaServe Cloud",
         "url": "https://novaserve.dev",
         "sameAs": [
-          "https://github.com/sazamansari/NovaServe-",
+          "https://github.com/novaserve-cloud/novaserve",
           "https://www.npmjs.com/package/novaserve",
           "https://md-shadab-azam-ansari.vercel.app/"
         ]

@@ -18,33 +18,30 @@ import {
   Heart,
   Award,
   Terminal,
-  Layers,
-  BookOpen,
   Zap,
   Gift,
   Users,
   ArrowRight,
   ShieldCheck,
   ChevronRight,
-  Filter,
+  PlusCircle,
+  Rocket,
 } from "lucide-react";
-import { DiamondIcon } from "@/components/Icons";
 
 interface Contributor {
   id: string;
   name: string;
   username: string;
   role: string;
-  category: "maintainer" | "code" | "docs" | "providers" | "first-time";
+  category: "maintainer" | "code" | "docs" | "providers";
   avatarBg: string;
   avatarText: string;
-  prsMerged: number;
-  commits: number;
   badge: string;
   bio: string;
   topContribution: string;
   location: string;
   joined: string;
+  githubUrl: string;
   featured?: boolean;
 }
 
@@ -59,15 +56,13 @@ interface Issue {
 }
 
 export function WallOfFame() {
-  const [selectedCategory, setSelectedCategory] = useState<string>("all");
-  const [searchQuery, setSearchQuery] = useState<string>("");
   const [copiedCommand, setCopiedCommand] = useState<string | null>(null);
   const [activeModalContributor, setActiveModalContributor] = useState<Contributor | null>(null);
   const [issueFilter, setIssueFilter] = useState<string>("all");
 
   const quickstartCommands = [
-    "git clone https://github.com/sazamansari/NovaServe-.git",
-    "cd NovaServe-",
+    "git clone https://github.com/novaserve-cloud/novaserve.git",
+    "cd novaserve",
     "npm install",
     "npm run dev",
   ];
@@ -78,270 +73,80 @@ export function WallOfFame() {
     setTimeout(() => setCopiedCommand(null), 2000);
   };
 
-  const contributors: Contributor[] = [
+  // Real maintainers of NovaServe
+  const maintainers: Contributor[] = [
     {
       id: "1",
-      name: "Sazam Ansari",
+      name: "Md Shadab Azam Ansari",
       username: "sazamansari",
-      role: "Creator & Lead Architect",
+      role: "Creator & Lead Compiler Architect",
       category: "maintainer",
       avatarBg: "bg-amber-500",
       avatarText: "SA",
-      prsMerged: 342,
-      commits: 1250,
       badge: "👑 Creator",
-      bio: "Creator of NovaServe. Lead architect behind the TypeScript AST multi-cloud compiler engine and zero-drift state machine.",
-      topContribution: "NovaServe Core AST Compiler & Provider Matrix",
-      location: "San Francisco, CA",
+      bio: "Creator of NovaServe. Lead architect behind the TypeScript AST multi-cloud compiler engine, zero-drift state machine, and core NPM package.",
+      topContribution: "NovaServe Core AST Compiler & Provider Matrix Engine",
+      location: "India",
       joined: "Jan 2025",
+      githubUrl: "https://github.com/sazamansari",
       featured: true,
     },
     {
       id: "2",
-      name: "Alex Rivera",
-      username: "arivera-cloud",
-      role: "Core Maintainer",
+      name: "Mustakim Shaikh",
+      username: "MustakimShaikh01",
+      role: "Co-Maintainer & Open Source Core Contributor",
       category: "maintainer",
       avatarBg: "bg-indigo-600",
-      avatarText: "AR",
-      prsMerged: 184,
-      commits: 620,
-      badge: "⚡ AST Pioneer",
-      bio: "Spearheaded the Python AST parser integration and AWS Lambda/ECS auto-scaling terraform module generators.",
-      topContribution: "Python AST Transformer & AWS Provider Module",
-      location: "Berlin, Germany",
+      avatarText: "MS",
+      badge: "⚡ Co-Maintainer",
+      bio: "Co-maintainer of NovaServe Cloud. Spearheading infrastructure deployment engines, cloud architecture docs, and multi-provider bindings.",
+      topContribution: "Infrastructure Deployment Pipeline & Cloud Architecture Docs",
+      location: "India",
       joined: "Feb 2025",
+      githubUrl: "https://github.com/MustakimShaikh01",
       featured: true,
-    },
-    {
-      id: "3",
-      name: "Elena Rostova",
-      username: "elena-dev",
-      role: "Cloud Edge Specialist",
-      category: "providers",
-      avatarBg: "bg-emerald-600",
-      avatarText: "ER",
-      prsMerged: 96,
-      commits: 310,
-      badge: "🛡️ Edge Titan",
-      bio: "Authored Cloudflare Workers & Vercel Edge Runtime bindings for sub-4ms cold start execution.",
-      topContribution: "Cloudflare Workers & KV Edge Provider Specs",
-      location: "Toronto, Canada",
-      joined: "Mar 2025",
-      featured: true,
-    },
-    {
-      id: "4",
-      name: "Marcus Chen",
-      username: "marcus-k8s",
-      role: "Infrastructure Lead",
-      category: "code",
-      avatarBg: "bg-[#FFB020]",
-      avatarText: "MC",
-      prsMerged: 112,
-      commits: 440,
-      badge: "🚀 K8s Architect",
-      bio: "Created Helm chart generation pipeline and Docker Compose fallback engine for local zero-config testing.",
-      topContribution: "Kubernetes & Helm Chart Compiler Target",
-      location: "Singapore",
-      joined: "Feb 2025",
-      featured: true,
-    },
-    {
-      id: "5",
-      name: "Sarah Jenkins",
-      username: "sjenkins-docs",
-      role: "Docs & Developer Experience",
-      category: "docs",
-      avatarBg: "bg-rose-500",
-      avatarText: "SJ",
-      prsMerged: 78,
-      commits: 210,
-      badge: "📚 Docs Hero",
-      bio: "Redesigned NovaServe documentation strategy, interactive playgrounds, and zero-to-hero CLI tutorials.",
-      topContribution: "Complete Interactive CLI Docs & API Specs",
-      location: "London, UK",
-      joined: "Apr 2025",
-      featured: false,
-    },
-    {
-      id: "6",
-      name: "Dmitri Volkov",
-      username: "dmitri-gcp",
-      role: "GCP Module Author",
-      category: "providers",
-      avatarBg: "bg-blue-600",
-      avatarText: "DV",
-      prsMerged: 64,
-      commits: 195,
-      badge: "🌩️ GCP Specialist",
-      bio: "Built Google Cloud Run and Cloud Functions native HCL mapping layers with IAM auto-minimization.",
-      topContribution: "GCP Cloud Run & IAM Security Policy Generator",
-      location: "Zurich, Switzerland",
-      joined: "Mar 2025",
-      featured: false,
-    },
-    {
-      id: "7",
-      name: "Aisha Patel",
-      username: "aisha-sec",
-      role: "Security & Compliance Auditor",
-      category: "code",
-      avatarBg: "bg-purple-600",
-      avatarText: "AP",
-      prsMerged: 52,
-      commits: 165,
-      badge: "🔒 Security Sentinel",
-      bio: "Implemented SOC2 audit report generation, automated CSP rules, and zero-trust IAM policy verifier.",
-      topContribution: "Zero-Trust IAM Policy Checker & SOC2 Auditing",
-      location: "Bengaluru, India",
-      joined: "May 2025",
-      featured: false,
-    },
-    {
-      id: "8",
-      name: "Kenji Sato",
-      username: "kenji-wasm",
-      role: "WASM Compiler Contributor",
-      category: "code",
-      avatarBg: "bg-teal-600",
-      avatarText: "KS",
-      prsMerged: 41,
-      commits: 130,
-      badge: "⚙️ WASM Engine",
-      bio: "Optimized Rust-to-WASM AST parser reducing client-side playground compile time from 1.2s to 0.38s.",
-      topContribution: "Rust WASM AST Parser Optimization",
-      location: "Tokyo, Japan",
-      joined: "May 2025",
-      featured: false,
-    },
-    {
-      id: "9",
-      name: "Amara Okeke",
-      username: "amara-first",
-      role: "Open Source Contributor",
-      category: "first-time",
-      avatarBg: "bg-pink-600",
-      avatarText: "AO",
-      prsMerged: 14,
-      commits: 45,
-      badge: "🌟 Rising Star",
-      bio: "Fixed 8 good-first-issues in CLI error formatting and added color-coded diff output for `novaserve plan`.",
-      topContribution: "Color-Coded CLI Terminal Diff Output",
-      location: "Lagos, Nigeria",
-      joined: "Jun 2025",
-      featured: false,
-    },
-    {
-      id: "10",
-      name: "Lucas Silva",
-      username: "lucas-azure",
-      role: "Azure Provider Specialist",
-      category: "providers",
-      avatarBg: "bg-sky-600",
-      avatarText: "LS",
-      prsMerged: 38,
-      commits: 110,
-      badge: "🔷 Azure Specialist",
-      bio: "Added Azure Container Apps & Cosmos DB ARM template mapping modules.",
-      topContribution: "Azure Container Apps & Bicep Exporter",
-      location: "São Paulo, Brazil",
-      joined: "May 2025",
-      featured: false,
-    },
-    {
-      id: "11",
-      name: "Hannah Lindqvist",
-      username: "hannah-bench",
-      role: "Performance Engineer",
-      category: "code",
-      avatarBg: "bg-amber-600",
-      avatarText: "HL",
-      prsMerged: 29,
-      commits: 98,
-      badge: "⚡ Benchmarking Lead",
-      bio: "Created latency benchmarking suite comparing NovaServe compile speeds against Terraform and Pulumi.",
-      topContribution: "Automated Micro-Benchmarking Suite",
-      location: "Stockholm, Sweden",
-      joined: "Jun 2025",
-      featured: false,
-    },
-    {
-      id: "12",
-      name: "Liam O'Connor",
-      username: "liam-docs",
-      role: "Community Advocate",
-      category: "docs",
-      avatarBg: "bg-emerald-500",
-      avatarText: "LO",
-      prsMerged: 22,
-      commits: 76,
-      badge: "✍️ Content Creator",
-      bio: "Authored 10+ starter templates and step-by-step guides for serverless API deployment.",
-      topContribution: "10+ Next.js & Python Starter Templates",
-      location: "Dublin, Ireland",
-      joined: "Jul 2025",
-      featured: false,
     },
   ];
 
   const goodFirstIssues: Issue[] = [
     {
-      id: "#412",
-      title: "Add dark mode auto-detection toggle in Web Playground",
+      id: "#1",
+      title: "Add dark mode toggle support in Web Playground component",
       category: "Frontend UI",
       difficulty: "Good First Issue",
       points: 100,
       labels: ["good-first-issue", "react", "ui"],
-      url: "https://github.com/sazamansari/NovaServe-/issues/412",
+      url: "https://github.com/novaserve-cloud/novaserve/issues",
     },
     {
-      id: "#428",
-      title: "Enhance `novaserve status` CLI output with spinner animations",
+      id: "#2",
+      title: "Enhance `novaserve status` CLI output with progress spinner animations",
       category: "CLI Tooling",
       difficulty: "Good First Issue",
       points: 150,
       labels: ["good-first-issue", "typescript", "cli"],
-      url: "https://github.com/sazamansari/NovaServe-/issues/428",
+      url: "https://github.com/novaserve-cloud/novaserve/issues",
     },
     {
-      id: "#455",
-      title: "Create GCP Cloud Functions v2 provider JSON schema mapping",
+      id: "#3",
+      title: "Add Cloudflare Workers KV bindings & JSON schema mapping",
       category: "Providers Matrix",
       difficulty: "Intermediate",
       points: 300,
-      labels: ["help-wanted", "gcp", "schema"],
-      url: "https://github.com/sazamansari/NovaServe-/issues/455",
+      labels: ["help-wanted", "cloudflare", "schema"],
+      url: "https://github.com/novaserve-cloud/novaserve/issues",
     },
     {
-      id: "#479",
-      title: "Add error diagnostic suggestions for invalid AWS IAM role wildcards",
+      id: "#4",
+      title: "Implement detailed error diagnostics for invalid IAM role wildcards",
       category: "Compiler Engine",
       difficulty: "Intermediate",
       points: 350,
       labels: ["compiler", "security", "ast"],
-      url: "https://github.com/sazamansari/NovaServe-/issues/479",
-    },
-    {
-      id: "#501",
-      title: "Implement Terraform HCL state reverse-importer for AWS S3 buckets",
-      category: "State Management",
-      difficulty: "Advanced",
-      points: 600,
-      labels: ["terraform", "hcl", "advanced"],
-      url: "https://github.com/sazamansari/NovaServe-/issues/501",
+      url: "https://github.com/novaserve-cloud/novaserve/issues",
     },
   ];
-
-  const filteredContributors = contributors.filter((c) => {
-    const matchesCategory = selectedCategory === "all" || c.category === selectedCategory;
-    const matchesSearch =
-      c.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      c.username.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      c.bio.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      c.badge.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
 
   const filteredIssues = goodFirstIssues.filter((i) => {
     if (issueFilter === "all") return true;
@@ -356,20 +161,19 @@ export function WallOfFame() {
       {/* Hero Header Section */}
       <section className="relative pt-32 pb-20 overflow-hidden bg-gradient-to-b from-amber-50/60 via-white to-white border-b border-gray-100">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
-        
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-8">
           <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-white border border-amber-300 shadow-sm text-xs font-mono font-bold text-amber-900 animate-float">
             <Trophy className="w-4 h-4 text-[#FFB020]" />
-            <span>OPEN SOURCE WALL OF FAME & CONTRIBUTION</span>
+            <span>OPEN SOURCE WALL OF FAME</span>
           </div>
 
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-gray-900 max-w-5xl mx-auto leading-[1.1]">
-            Honoring the Legends Building <span className="bg-gradient-to-r from-amber-600 via-[#FFB020] to-yellow-500 bg-clip-text text-transparent">NovaServe</span>
+            Honoring the Builders Behind <span className="bg-gradient-to-r from-amber-600 via-[#FFB020] to-yellow-500 bg-clip-text text-transparent">NovaServe</span>
           </h1>
 
           <p className="text-lg sm:text-xl text-gray-600 font-semibold max-w-3xl mx-auto leading-relaxed">
-            NovaServe is 100% open source and powered by developer contributions worldwide. 
-            Discover our Hall of Fame, claim good first issues, and earn recognition in our global community.
+            NovaServe is 100% open source and driven by developer contributions. Explore our maintainers, submit your first pull request, and claim your place on our Wall of Fame!
           </p>
 
           {/* Quick CTA Actions */}
@@ -382,7 +186,7 @@ export function WallOfFame() {
               <span>Explore Wall of Fame</span>
             </a>
             <a
-              href="https://github.com/sazamansari/NovaServe-"
+              href="https://github.com/novaserve-cloud/novaserve"
               target="_blank"
               rel="noopener noreferrer"
               className="px-7 py-3.5 rounded-2xl bg-gray-900 text-white font-extrabold text-sm hover:bg-black transition-all flex items-center space-x-2 shadow-md cursor-pointer"
@@ -399,205 +203,112 @@ export function WallOfFame() {
               <span>Good First Issues</span>
             </a>
           </div>
-
-          {/* Key Community Metrics */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto pt-8">
-            <div className="p-5 rounded-3xl bg-white border border-gray-200 shadow-sm text-center space-y-1 hover:border-[#FFB020] transition-all">
-              <div className="text-3xl font-black text-gray-900">248+</div>
-              <div className="text-xs text-gray-500 font-mono font-bold">Total Contributors</div>
-            </div>
-            <div className="p-5 rounded-3xl bg-white border border-gray-200 shadow-sm text-center space-y-1 hover:border-[#FFB020] transition-all">
-              <div className="text-3xl font-black text-amber-600">3,420+</div>
-              <div className="text-xs text-gray-500 font-mono font-bold">PRs Merged</div>
-            </div>
-            <div className="p-5 rounded-3xl bg-white border border-gray-200 shadow-sm text-center space-y-1 hover:border-[#FFB020] transition-all">
-              <div className="text-3xl font-black text-indigo-600">18,900+</div>
-              <div className="text-xs text-gray-500 font-mono font-bold">Code Commits</div>
-            </div>
-            <div className="p-5 rounded-3xl bg-white border border-gray-200 shadow-sm text-center space-y-1 hover:border-[#FFB020] transition-all">
-              <div className="text-3xl font-black text-emerald-600">42+</div>
-              <div className="text-xs text-gray-500 font-mono font-bold">Countries Represented</div>
-            </div>
-          </div>
         </div>
       </section>
 
-      {/* Featured Core Maintainers Spotlight */}
-      <section className="py-16 bg-gray-50/50 border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-8 gap-4">
-            <div>
-              <div className="inline-flex items-center space-x-2 text-xs font-mono font-extrabold text-amber-700 uppercase tracking-wider">
-                <Sparkles className="w-3.5 h-3.5 text-[#FFB020]" />
-                <span>Featured Legends</span>
-              </div>
-              <h2 className="text-2xl sm:text-3xl font-black text-gray-900 mt-1">
-                Top Maintainers & Architects
-              </h2>
-            </div>
-            <p className="text-sm text-gray-600 font-semibold max-w-md">
-              Recognizing our core maintainers who drive architecture design, code reviews, and community mentoring.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {contributors
-              .filter((c) => c.featured)
-              .map((c) => (
-                <div
-                  key={c.id}
-                  onClick={() => setActiveModalContributor(c)}
-                  className="p-6 rounded-3xl bg-white border border-gray-200 shadow-sm hover:shadow-xl hover:border-[#FFB020] transition-all cursor-pointer flex flex-col justify-between group"
-                >
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between">
-                      <div className={`w-14 h-14 rounded-2xl ${c.avatarBg} text-white font-black text-xl flex items-center justify-center shadow-md group-hover:scale-105 transition-transform`}>
-                        {c.avatarText}
-                      </div>
-                      <span className="px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-900 text-xs font-mono font-bold">
-                        {c.badge}
-                      </span>
-                    </div>
-
-                    <div>
-                      <h3 className="text-lg font-black text-gray-900 group-hover:text-amber-600 transition-colors">
-                        {c.name}
-                      </h3>
-                      <p className="text-xs text-gray-500 font-mono">@{c.username}</p>
-                    </div>
-
-                    <p className="text-xs text-gray-600 font-semibold line-clamp-3 leading-relaxed">
-                      {c.bio}
-                    </p>
-                  </div>
-
-                  <div className="pt-6 border-t border-gray-100 flex items-center justify-between text-xs text-gray-500 font-mono font-semibold mt-4">
-                    <span className="flex items-center space-x-1 text-emerald-600 font-bold">
-                      <GitPullRequest className="w-3.5 h-3.5" />
-                      <span>{c.prsMerged} PRs</span>
-                    </span>
-                    <span>{c.location}</span>
-                  </div>
-                </div>
-              ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Main Wall of Fame Grid Section */}
+      {/* Main Wall of Fame Section */}
       <section id="wall-of-fame-grid" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           <div className="text-center space-y-3">
+            <div className="inline-flex items-center space-x-2 text-xs font-mono font-extrabold text-amber-700 uppercase tracking-wider">
+              <Sparkles className="w-3.5 h-3.5 text-[#FFB020]" />
+              <span>CORE ARCHITECTS & CONTRIBUTORS</span>
+            </div>
             <h2 className="text-3xl sm:text-5xl font-black text-gray-900 tracking-tight">
-              Community Hall of Fame
+              Community Wall of Fame
             </h2>
             <p className="text-base sm:text-lg text-gray-600 font-semibold max-w-2xl mx-auto">
-              Filter through our global contributors by impact area or search by name.
+              Meet the core maintainers behind NovaServe. Contribute to earn your spot next!
             </p>
-          </div>
-
-          {/* Filter Tabs & Search Bar */}
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4 p-4 rounded-3xl bg-gray-50 border border-gray-200">
-            {/* Category Tabs */}
-            <div className="flex flex-wrap items-center gap-2 w-full md:w-auto">
-              {[
-                { id: "all", label: "All Contributors" },
-                { id: "maintainer", label: "Maintainers" },
-                { id: "code", label: "Core Code" },
-                { id: "providers", label: "Providers" },
-                { id: "docs", label: "Docs Heroes" },
-                { id: "first-time", label: "Rising Stars" },
-              ].map((tab) => (
-                <button
-                  key={tab.id}
-                  onClick={() => setSelectedCategory(tab.id)}
-                  className={`px-4 py-2 rounded-xl text-xs font-mono font-bold transition-all ${
-                    selectedCategory === tab.id
-                      ? "bg-[#FFB020] text-black shadow-md"
-                      : "bg-white text-gray-700 border border-gray-200 hover:bg-gray-100"
-                  }`}
-                >
-                  {tab.label}
-                </button>
-              ))}
-            </div>
-
-            {/* Search Input */}
-            <div className="relative w-full md:w-72">
-              <Search className="w-4 h-4 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
-              <input
-                type="text"
-                placeholder="Search contributor or topic..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 rounded-xl bg-white border border-gray-200 text-xs text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-[#FFB020] focus:ring-1 focus:ring-[#FFB020] font-semibold"
-              />
-            </div>
           </div>
 
           {/* Grid of Contributor Cards */}
-          {filteredContributors.length === 0 ? (
-            <div className="text-center py-16 bg-gray-50 rounded-3xl border border-dashed border-gray-300 space-y-3">
-              <Users className="w-10 h-10 text-gray-400 mx-auto" />
-              <div className="text-lg font-black text-gray-800">No contributors found</div>
-              <p className="text-xs text-gray-500 font-semibold">
-                Try adjusting your search query or filter category.
-              </p>
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredContributors.map((c) => (
-                <div
-                  key={c.id}
-                  onClick={() => setActiveModalContributor(c)}
-                  className="p-6 rounded-3xl bg-white border border-gray-200 shadow-sm hover:shadow-xl hover:border-[#FFB020] transition-all cursor-pointer space-y-4 flex flex-col justify-between group"
-                >
-                  <div className="space-y-4">
-                    <div className="flex items-start justify-between">
-                      <div className="flex items-center space-x-3">
-                        <div className={`w-12 h-12 rounded-2xl ${c.avatarBg} text-white font-black text-lg flex items-center justify-center shadow-md group-hover:scale-105 transition-transform`}>
-                          {c.avatarText}
-                        </div>
-                        <div>
-                          <h3 className="text-base font-black text-gray-900 group-hover:text-amber-600 transition-colors">
-                            {c.name}
-                          </h3>
-                          <p className="text-xs text-gray-500 font-mono">@{c.username}</p>
-                        </div>
-                      </div>
-                      <span className="text-[11px] font-mono font-bold px-2.5 py-1 rounded-full bg-gray-100 border border-gray-200 text-gray-700">
-                        {c.badge}
-                      </span>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Real Maintainer 1 */}
+            {maintainers.map((m) => (
+              <div
+                key={m.id}
+                onClick={() => setActiveModalContributor(m)}
+                className="p-8 rounded-3xl bg-white border border-gray-200 shadow-sm hover:shadow-xl hover:border-[#FFB020] transition-all cursor-pointer space-y-6 flex flex-col justify-between group"
+              >
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <div className={`w-16 h-16 rounded-2xl ${m.avatarBg} text-white font-black text-2xl flex items-center justify-center shadow-md group-hover:scale-105 transition-transform`}>
+                      {m.avatarText}
                     </div>
-
-                    <div className="text-xs font-mono font-semibold text-amber-700 bg-amber-50/80 px-3 py-1.5 rounded-xl border border-amber-200/60 truncate">
-                      Key PR: {c.topContribution}
-                    </div>
-
-                    <p className="text-xs text-gray-600 font-semibold leading-relaxed line-clamp-2">
-                      {c.bio}
-                    </p>
-                  </div>
-
-                  <div className="pt-4 border-t border-gray-100 flex items-center justify-between text-xs text-gray-500 font-mono font-semibold">
-                    <div className="flex items-center space-x-3">
-                      <span className="flex items-center space-x-1 text-emerald-600 font-bold">
-                        <GitPullRequest className="w-3.5 h-3.5" />
-                        <span>{c.prsMerged}</span>
-                      </span>
-                      <span className="flex items-center space-x-1 text-indigo-600 font-bold">
-                        <Code2 className="w-3.5 h-3.5" />
-                        <span>{c.commits}</span>
-                      </span>
-                    </div>
-                    <span className="text-gray-400 group-hover:text-amber-600 flex items-center text-[11px]">
-                      Details <ChevronRight className="w-3 h-3 ml-0.5" />
+                    <span className="px-3.5 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-amber-900 text-xs font-mono font-extrabold">
+                      {m.badge}
                     </span>
                   </div>
+
+                  <div>
+                    <h3 className="text-xl font-black text-gray-900 group-hover:text-amber-600 transition-colors">
+                      {m.name}
+                    </h3>
+                    <p className="text-xs text-gray-500 font-mono">@{m.username}</p>
+                  </div>
+
+                  <div className="text-xs font-mono font-semibold text-amber-800 bg-amber-50/80 px-3 py-2 rounded-xl border border-amber-200/60">
+                    {m.topContribution}
+                  </div>
+
+                  <p className="text-xs text-gray-600 font-semibold leading-relaxed">
+                    {m.bio}
+                  </p>
                 </div>
-              ))}
+
+                <div className="pt-6 border-t border-gray-100 flex items-center justify-between text-xs text-gray-500 font-mono font-semibold">
+                  <span className="text-amber-700 font-bold">{m.role}</span>
+                  <span className="text-gray-400 group-hover:text-amber-600 flex items-center text-[11px] font-bold">
+                    View Profile <ChevronRight className="w-3.5 h-3.5 ml-0.5" />
+                  </span>
+                </div>
+              </div>
+            ))}
+
+            {/* COMING SOON: YOU COULD BE NEXT CARD */}
+            <div className="p-8 rounded-3xl bg-gradient-to-br from-amber-50 via-amber-100/50 to-orange-50 border-2 border-dashed border-amber-400 shadow-md hover:shadow-2xl hover:border-amber-500 transition-all flex flex-col justify-between space-y-6 relative overflow-hidden group">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-amber-300/20 rounded-full blur-2xl pointer-events-none" />
+
+              <div className="space-y-4 relative z-10">
+                <div className="flex items-center justify-between">
+                  <div className="w-16 h-16 rounded-2xl bg-amber-500 text-black font-black text-2xl flex items-center justify-center shadow-lg group-hover:rotate-6 transition-transform">
+                    <Rocket className="w-8 h-8 text-black" />
+                  </div>
+                  <span className="px-3.5 py-1.5 rounded-full bg-amber-500 text-black text-xs font-mono font-black animate-pulse">
+                    COMING SOON
+                  </span>
+                </div>
+
+                <div>
+                  <h3 className="text-2xl font-black text-gray-900 group-hover:text-amber-700 transition-colors">
+                    You Could Be Next!
+                  </h3>
+                  <p className="text-xs text-amber-900 font-mono font-bold mt-1">@your-github-handle</p>
+                </div>
+
+                <div className="text-xs font-mono font-bold text-amber-950 bg-amber-200/80 px-3.5 py-2.5 rounded-xl border border-amber-300">
+                  🏆 Claim your spot on the Wall of Fame!
+                </div>
+
+                <p className="text-xs text-gray-700 font-semibold leading-relaxed">
+                  NovaServe is actively inviting open-source developers to contribute! Submit your first Pull Request today and get permanently featured on this Wall of Fame with custom badges.
+                </p>
+              </div>
+
+              <div className="pt-6 border-t border-amber-200 relative z-10">
+                <a
+                  href="https://github.com/novaserve-cloud/novaserve"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-yellow w-full py-3 rounded-2xl font-black text-xs flex items-center justify-center space-x-2 shadow-md cursor-pointer"
+                >
+                  <PlusCircle className="w-4 h-4" />
+                  <span>Contribute Now & Get Featured</span>
+                </a>
+              </div>
             </div>
-          )}
+          </div>
         </div>
       </section>
 
@@ -613,10 +324,10 @@ export function WallOfFame() {
               <span>STEP-BY-STEP CONTRIBUTION WORKFLOW</span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
-              How to Become a Contributor
+              How to Get Featured
             </h2>
             <p className="text-base sm:text-lg text-gray-300 font-semibold leading-relaxed">
-              Making your first contribution to NovaServe is quick and rewarding. Follow this simple guide to get started.
+              Making your contribution to NovaServe is simple. Follow these steps to earn your Wall of Fame badge.
             </p>
           </div>
 
@@ -628,7 +339,7 @@ export function WallOfFame() {
               </div>
               <h3 className="text-lg font-black text-white">Find an Issue</h3>
               <p className="text-xs text-gray-300 font-semibold leading-relaxed">
-                Browse open issues on GitHub filtered by <code className="text-[#FFB020] font-mono">good-first-issue</code> or <code className="text-[#FFB020] font-mono">help-wanted</code>.
+                Browse open issues on GitHub tagged with <code className="text-[#FFB020] font-mono">good-first-issue</code> or <code className="text-[#FFB020] font-mono">help-wanted</code>.
               </p>
             </div>
 
@@ -648,7 +359,7 @@ export function WallOfFame() {
               </div>
               <h3 className="text-lg font-black text-white">Build & Test</h3>
               <p className="text-xs text-gray-300 font-semibold leading-relaxed">
-                Write your code or doc enhancements, then verify with <code className="text-[#FFB020] font-mono">npm test</code> to ensure clean execution.
+                Write code or documentation enhancements, then verify with <code className="text-[#FFB020] font-mono">npm test</code>.
               </p>
             </div>
 
@@ -656,9 +367,9 @@ export function WallOfFame() {
               <div className="w-8 h-8 rounded-full bg-[#FFB020] text-black font-black text-sm flex items-center justify-center">
                 4
               </div>
-              <h3 className="text-lg font-black text-white">Submit & Join</h3>
+              <h3 className="text-lg font-black text-white">Submit PR</h3>
               <p className="text-xs text-gray-300 font-semibold leading-relaxed">
-                Open your Pull Request! Once merged, your name will automatically be featured on this Wall of Fame!
+                Submit your Pull Request! Once merged, your name and avatar will be added to the Wall of Fame.
               </p>
             </div>
           </div>
@@ -730,7 +441,6 @@ export function WallOfFame() {
                 { id: "all", label: "All Difficulties" },
                 { id: "beginner", label: "Good First Issue" },
                 { id: "intermediate", label: "Intermediate" },
-                { id: "advanced", label: "Advanced" },
               ].map((btn) => (
                 <button
                   key={btn.id}
@@ -765,9 +475,7 @@ export function WallOfFame() {
                       className={`text-[11px] font-mono font-bold px-2.5 py-0.5 rounded-full ${
                         issue.difficulty === "Good First Issue"
                           ? "bg-emerald-50 text-emerald-800 border border-emerald-200"
-                          : issue.difficulty === "Intermediate"
-                          ? "bg-indigo-50 text-indigo-800 border border-indigo-200"
-                          : "bg-purple-50 text-purple-800 border border-purple-200"
+                          : "bg-indigo-50 text-indigo-800 border border-indigo-200"
                       }`}
                     >
                       {issue.difficulty}
@@ -788,10 +496,6 @@ export function WallOfFame() {
                 </div>
 
                 <div className="flex items-center space-x-4 w-full md:w-auto justify-between md:justify-end border-t md:border-t-0 pt-4 md:pt-0 border-gray-100">
-                  <div className="text-right">
-                    <div className="text-xs text-gray-400 font-mono font-semibold">Reward</div>
-                    <div className="text-sm font-black text-amber-600">+{issue.points} pts</div>
-                  </div>
                   <a
                     href={issue.url}
                     target="_blank"
@@ -820,7 +524,7 @@ export function WallOfFame() {
               Contributor Swag & Perks
             </h2>
             <p className="text-base sm:text-lg text-gray-600 font-semibold">
-              We appreciate every contribution! Here is how we give back to our amazing open source developers.
+              We appreciate every contribution! Here is how we give back to our open source developers.
             </p>
           </div>
 
@@ -831,7 +535,7 @@ export function WallOfFame() {
               </div>
               <h3 className="text-xl font-black text-gray-900">Exclusive Swag Box</h3>
               <p className="text-xs text-gray-600 font-semibold leading-relaxed">
-                Get a custom NovaServe t-shirt, holographic laptop stickers, and enamel pins delivered straight to your door upon your first merged PR!
+                Get custom NovaServe stickers, enamel pins, and contributor swag upon your first merged PR!
               </p>
             </div>
 
@@ -841,7 +545,7 @@ export function WallOfFame() {
               </div>
               <h3 className="text-xl font-black text-gray-900">Wall of Fame Badge</h3>
               <p className="text-xs text-gray-600 font-semibold leading-relaxed">
-                Permanent spot on our Wall of Fame page with customized badges, PR highlights, and links to your GitHub profile and website.
+                Permanent spot on our Wall of Fame page with customized badges and direct links to your GitHub profile.
               </p>
             </div>
 
@@ -849,9 +553,9 @@ export function WallOfFame() {
               <div className="w-16 h-16 rounded-2xl bg-emerald-100 text-emerald-600 mx-auto flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">
                 <Award className="w-8 h-8 text-emerald-600" />
               </div>
-              <h3 className="text-xl font-black text-gray-900">VIP Discord & Advisory</h3>
+              <h3 className="text-xl font-black text-gray-900">VIP Maintainer Access</h3>
               <p className="text-xs text-gray-600 font-semibold leading-relaxed">
-                Gain direct access to private maintainer channels, architecture review office hours, and early access preview builds.
+                Gain direct access to maintainer channels, architecture reviews, and early access feature previews.
               </p>
             </div>
           </div>
@@ -890,17 +594,6 @@ export function WallOfFame() {
               </p>
             </div>
 
-            <div className="grid grid-cols-2 gap-4 text-center">
-              <div className="p-4 rounded-2xl bg-amber-50/50 border border-amber-100">
-                <div className="text-2xl font-black text-amber-600">{activeModalContributor.prsMerged}</div>
-                <div className="text-xs text-gray-500 font-mono font-bold">Pull Requests</div>
-              </div>
-              <div className="p-4 rounded-2xl bg-indigo-50/50 border border-indigo-100">
-                <div className="text-2xl font-black text-indigo-600">{activeModalContributor.commits}</div>
-                <div className="text-xs text-gray-500 font-mono font-bold">Commits</div>
-              </div>
-            </div>
-
             <div className="space-y-2">
               <div className="text-xs font-mono text-gray-500 font-bold">Top Contribution:</div>
               <div className="text-xs font-mono font-bold text-gray-900 bg-gray-100 p-3 rounded-xl border border-gray-200">
@@ -910,7 +603,7 @@ export function WallOfFame() {
 
             <div className="pt-2 flex items-center justify-between">
               <a
-                href={`https://github.com/${activeModalContributor.username}`}
+                href={activeModalContributor.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-yellow w-full py-3 rounded-xl text-center text-xs font-black flex items-center justify-center space-x-2 cursor-pointer shadow"

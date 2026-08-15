@@ -224,8 +224,8 @@ export default function ContactPage() {
 
                 <div className="flex items-center space-x-2">
                   <Github className="w-4 h-4 text-gray-900 shrink-0" />
-                  <a href="https://github.com/sazamansari/NovaServe-" target="_blank" rel="noopener noreferrer" className="hover:text-amber-600 font-bold flex items-center gap-1">
-                    <span>GitHub: sazamansari/NovaServe-</span>
+                  <a href="https://github.com/novaserve-cloud/novaserve" target="_blank" rel="noopener noreferrer" className="hover:text-amber-600 font-bold flex items-center gap-1">
+                    <span>GitHub: novaserve-cloud/novaserve</span>
                     <ExternalLink className="w-3 h-3" />
                   </a>
                 </div>

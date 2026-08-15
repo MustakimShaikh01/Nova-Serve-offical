@@ -301,7 +301,7 @@ export default function DocsPage() {
 
               <div className="pt-3 border-t border-gray-200 space-y-1">
                 <a
-                  href="https://github.com/sazamansari/NovaServe-"
+                  href="https://github.com/novaserve-cloud/novaserve"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full text-left px-3 py-2 rounded-lg text-xs font-bold text-gray-700 hover:text-black hover:bg-gray-200/70 flex items-center justify-between transition-colors"
@@ -501,13 +501,13 @@ export default function DocsPage() {
                     <span>NPM Package (2.1.6)</span>
                   </a>
                   <a
-                    href="https://github.com/sazamansari/NovaServe-"
+                    href="https://github.com/novaserve-cloud/novaserve"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:text-amber-700 flex items-center space-x-1.5 transition-colors"
                   >
                     <GithubIcon className="w-3.5 h-3.5 text-gray-900 shrink-0" />
-                    <span>GitHub: sazamansari</span>
+                    <span>GitHub: novaserve-cloud</span>
                   </a>
                   <a
                     href="https://github.com/MustakimShaikh01"

@@ -161,7 +161,7 @@ export function Navbar() {
             <div className="hidden sm:flex items-center space-x-4">
               {/* GitHub Star Pill */}
               <a
-                href="https://github.com/sazamansari/NovaServe-"
+                href="https://github.com/novaserve-cloud/novaserve"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center space-x-1.5 text-xs font-mono text-gray-700 hover:text-amber-600 transition-colors cursor-pointer"
@@ -229,7 +229,7 @@ export function Navbar() {
 
             <div className="pt-2 border-t border-gray-200 flex items-center justify-between">
               <a
-                href="https://github.com/sazamansari/NovaServe-"
+                href="https://github.com/novaserve-cloud/novaserve"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center space-x-2 text-sm text-gray-700 font-bold"

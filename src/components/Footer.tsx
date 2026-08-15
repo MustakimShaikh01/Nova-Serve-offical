@@ -18,11 +18,11 @@ export function Footer() {
               <span className="text-lg font-black text-gray-900 tracking-tight">NovaServe</span>
             </Link>
             <p className="text-sm text-gray-600 font-semibold leading-relaxed max-w-sm">
-              Define your cloud application once in TypeScript. NovaServe compiles, plans, and deploys it to multiple cloud providers with zero-drift safety.
+              The modern open-source framework for building, deploying, and scaling cloud applications. Build Fast. Deploy Anywhere. Scale Automatically.
             </p>
             <div className="flex items-center space-x-3 pt-2">
               <a
-                href="https://github.com/sazamansari/NovaServe-"
+                href="https://github.com/novaserve-cloud/novaserve"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2.5 rounded-xl bg-gray-100 border border-gray-300 text-gray-700 hover:text-black hover:border-[#FFB020] hover:bg-[#FFB020] transition-colors cursor-pointer"
