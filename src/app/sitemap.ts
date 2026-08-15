@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://novaserve.dev";
+  const baseUrl = "https://novaserve.cloud";
   const routes = [
     "",
     "/docs",
@@ -15,6 +15,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/about",
     "/changelog",
     "/community",
+    "/wall-of-fame",
+    "/contribute",
     "/roadmap",
     "/security",
     "/careers",

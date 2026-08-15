@@ -36,6 +36,7 @@ export function Navbar() {
   const navLinks = [
     { name: "Docs", href: "/docs" },
     { name: "Registry", href: "/providers" },
+    { name: "Wall of Fame", href: "/wall-of-fame" },
     { name: "Blog", href: "/blog" },
     { name: "Pricing", href: "/pricing" },
     { name: "Changelog", href: "/changelog" },

@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/api/private/"],
     },
-    sitemap: "https://novaserve.dev/sitemap.xml",
+    sitemap: "https://novaserve.cloud/sitemap.xml",
   };
 }

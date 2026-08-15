@@ -6,12 +6,13 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.7.3-blue.svg?logo=typescript)](https://www.typescriptlang.org/)
 [![Official Domain](https://img.shields.io/badge/Domain-novaserve.cloud-amber.svg)](https://novaserve.cloud)
 
-**NovaServe** is an open-source, TypeScript-native cloud application compiler. It parses your TypeScript application code AST, automatically synthesizes zero-trust least-privilege IAM policies, generates multi-cloud state graphs, and deploys serverless infrastructure to AWS, Cloudflare Edge, Docker, and GCP without writing raw YAML or HCL scripts.
+**NovaServe** is an open-source, TypeScript-native cloud application compiler (100% open source and free for individuals). It parses your TypeScript application code AST, automatically synthesizes zero-trust least-privilege IAM policies, generates multi-cloud state graphs, and deploys serverless infrastructure to AWS, Cloudflare Edge, Docker, and GCP without writing raw YAML or HCL scripts.
 
 ---
 
 ## 🚀 Key Features
 
+- **Open Source & Free for Individuals**: Published under Apache-2.0 license, completely free for developers and independent builders.
 - **TypeScript AST Infrastructure Parsing**: Declare S3 buckets, SQS queues, PostgreSQL databases, and API routes natively in pure TypeScript.
 - **Automated Least-Privilege IAM Synthesis**: Zero wildcard IAM permissions. NovaServe inspects API calls at build time and generates scoped IAM JSON automatically.
 - **Multi-Cloud IR Targeting**: Single codebase compiles simultaneously to AWS Lambda/S3/SQS, Cloudflare Edge KV/Workers, Docker OCI images, and GCP Cloud Run.
@@ -26,11 +27,11 @@
   - 📧 Email: `md.shadab.azam.ansari@gmail.com`
   - 🌐 Portfolio: [md-shadab-azam-ansari.vercel.app](https://md-shadab-azam-ansari.vercel.app/)
   - 📦 NPM: [`novaserve@2.1.6`](https://www.npmjs.com/package/novaserve)
-  - 🐙 GitHub: [`sazamansari/NovaServe-`](https://github.com/sazamansari/NovaServe-)
+  - 🐙 GitHub: [`novaserve-cloud/novaserve`](https://github.com/novaserve-cloud/novaserve)
 
 - **Mustakim Shaikh** (*Co-Maintainer & Open Source Core Contributor*)
   - 📧 Email: `Mustakimshaikhprof@gmail.com`
-  - 🐙 GitHub: [`MustakimShaikh01/Nova-Serve-offical`](https://github.com/MustakimShaikh01/Nova-Serve-offical)
+  - 🐙 GitHub: [`novaserve-cloud/novaserve`](https://github.com/novaserve-cloud/novaserve)
   - 🌐 Production Domain: [novaserve.cloud](https://novaserve.cloud)
 
 ---

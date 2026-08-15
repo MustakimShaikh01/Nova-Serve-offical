@@ -77,8 +77,10 @@ export function Footer() {
 
           {/* Column 3: Resources & Company */}
           <div className="space-y-3">
-            <h4 className="text-xs uppercase font-mono font-bold tracking-wider text-gray-900">Company</h4>
+            <h4 className="text-xs uppercase font-mono font-bold tracking-wider text-gray-900">Company & Community</h4>
             <ul className="space-y-2.5 text-sm text-gray-600 font-semibold">
+              <li><Link href="/wall-of-fame" prefetch={true} className="hover:text-[#FFB020] transition-colors cursor-pointer font-bold text-amber-900">🏆 Wall of Fame</Link></li>
+              <li><Link href="/contribute" prefetch={true} className="hover:text-[#FFB020] transition-colors cursor-pointer">Open Source Contribute</Link></li>
               <li><Link href="/blog" prefetch={true} className="hover:text-[#FFB020] transition-colors cursor-pointer">Engineering Blog</Link></li>
               <li><Link href="/roadmap" prefetch={true} className="hover:text-[#FFB020] transition-colors cursor-pointer">Product Roadmap</Link></li>
               <li><Link href="/changelog" prefetch={true} className="hover:text-[#FFB020] transition-colors cursor-pointer">Changelog</Link></li>
